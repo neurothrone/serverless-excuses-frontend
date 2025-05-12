@@ -85,7 +85,7 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
                   disabled={isLoadingById}
                 />
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-end mb-1 mr-1">
                 <LoadingButton
                   type="submit"
                   isLoading={isLoadingById}
@@ -104,7 +104,7 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
               <p className="text-sm text-gray-400 mb-3">
                 Get a random excuse from the database.
               </p>
-              <div className="flex-grow flex items-end justify-end">
+              <div className="flex-grow flex items-end justify-end mb-3 mr-2">
                 <LoadingButton
                   onClick={handleGetRandom}
                   isLoading={isLoadingRandom}
