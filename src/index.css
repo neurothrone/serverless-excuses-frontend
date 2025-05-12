@@ -1,27 +1,70 @@
 @import "tailwindcss";
 
 :root {
+  /* Main colors */
   --violet-dark: #4c1d95;
   --violet-medium: #7c3aed;
   --violet-light: #a78bfa;
-  --dark-bg: #121212;
-  --dark-card: #1e1e1e;
-  --dark-border: #333333;
+  --violet-extra-light: #c4b5fd;
+
+  /* Dark theme colors */
+  --dark-bg: #0f0f13;
+  --dark-card: #1a1a22;
+  --dark-card-hover: #22222c;
+  --dark-card-active: #2a2a36;
+  --dark-border: #2e2e3a;
+  --dark-border-light: #3a3a4a;
   --dark-text: #e5e5e5;
   --dark-text-secondary: #a1a1aa;
+
+  /* Accent colors */
+  --accent-success: #10b981;
+  --accent-warning: #f59e0b;
+  --accent-error: #ef4444;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
 }
 
 /* Dark mode styles */
 .dark {
   background-color: var(--dark-bg);
   color: var(--dark-text);
+  min-height: 100vh;
 }
 
+/* Card styles */
 .dark-card {
   background-color: var(--dark-card);
-  border-color: var(--dark-border);
+  border: 1px solid var(--dark-border);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
+.dark-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--dark-border-light);
+}
+
+.dark-card-header {
+  border-bottom: 1px solid var(--dark-border);
+  padding: 1rem 1.25rem;
+}
+
+.dark-card-body {
+  padding: 1.25rem;
+}
+
+/* Text styles */
 .dark-text {
   color: var(--dark-text);
 }
@@ -30,20 +73,126 @@
   color: var(--dark-text-secondary);
 }
 
+.gradient-text {
+  background: linear-gradient(90deg, var(--violet-light) 0%, var(--violet-medium) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button styles */
 .dark-violet-button {
   background-color: var(--violet-medium);
   color: white;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
 }
 
 .dark-violet-button:hover {
   background-color: var(--violet-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.dark-violet-button:active {
+  transform: translateY(0);
+}
+
+.dark-violet-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.dark-violet-button:focus:not(:active)::after {
+  animation: ripple 0.6s ease-out;
 }
 
 .dark-violet-light-button {
   background-color: var(--violet-light);
   color: var(--dark-bg);
+  transition: all var(--transition-fast);
 }
 
 .dark-violet-light-button:hover {
-  opacity: 0.9;
+  background-color: var(--violet-extra-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.dark-violet-light-button:active {
+  transform: translateY(0);
+}
+
+/* Input styles */
+.dark-input {
+  background-color: rgba(30, 30, 46, 0.8);
+  border: 1px solid var(--dark-border);
+  color: var(--dark-text);
+  border-radius: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.dark-input:focus {
+  outline: none;
+  border-color: var(--violet-medium);
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+}
+
+.dark-input::placeholder {
+  color: var(--dark-text-secondary);
+  opacity: 0.6;
+}
+
+/* Animation keyframes */
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-normal) forwards;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(26, 26, 34, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(46, 46, 58, 0.3);
+}
+
+/* Modal animations */
+@keyframes slideIn {
+  from { transform: translateY(20px); }
+  to { transform: translateY(0); }
+}
+
+.modal-slide-in {
+  animation: fadeIn 0.3s ease-out, slideIn 0.3s ease-out;
 }

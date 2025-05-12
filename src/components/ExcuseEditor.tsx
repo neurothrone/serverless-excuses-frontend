@@ -53,60 +53,87 @@ export default function ExcuseEditor({ excuse, onClose, onSaved }: ExcuseEditorP
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
-      <div className="dark-card rounded-lg shadow-lg max-w-md w-full p-6">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold text-violet-300">Edit Excuse</h2>
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-[fadeIn_0.2s]">
+      <div
+        className="glass max-w-md w-full rounded-xl shadow-lg border border-gray-700/50 overflow-hidden modal-slide-in"
+      >
+        <div className="dark-card-header flex justify-between items-center border-b border-gray-700/50">
+          <h2 className="text-xl font-semibold gradient-text">Edit Excuse</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-200"
+            className="text-gray-400 hover:text-gray-200 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-800/50 transition-colors"
+            aria-label="Close"
           >
-            ✕
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </button>
         </div>
 
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="edit-excuse-text" className="block text-sm font-medium mb-1 text-gray-300">
-              Excuse Text
-            </label>
-            <input
-              id="edit-excuse-text"
-              type="text"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              className="w-full px-3 py-2 border rounded-md bg-gray-800 border-gray-700 text-white placeholder-gray-500"
-              disabled={isLoading}
-            />
-          </div>
+        <div className="p-6">
+          <form onSubmit={handleSubmit}>
+            <div className="mb-5">
+              <label htmlFor="edit-excuse-text" className="block text-sm font-medium mb-2 text-gray-300">
+                Excuse Text
+              </label>
+              <input
+                id="edit-excuse-text"
+                type="text"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                className="w-full dark-input"
+                disabled={isLoading}
+                autoFocus
+              />
+            </div>
 
-          <div className="text-sm text-gray-400 mb-4">
-            <p>ID: {excuse.id}</p>
-            <p>Used Count: {excuse.usedCount}</p>
-          </div>
+            <div className="flex flex-wrap gap-3 mb-5">
+              <div className="bg-gray-800/50 px-3 py-1.5 rounded-md text-sm text-gray-300 flex items-center">
+                <span className="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>
+                ID: <span className="ml-1 text-violet-300 font-medium">{excuse.id}</span>
+              </div>
 
-          {error && (
-            <div className="mb-4 text-red-400 text-sm">{error}</div>
-          )}
+              <div className="bg-gray-800/50 px-3 py-1.5 rounded-md text-sm text-gray-300 flex items-center">
+                <span className="w-2 h-2 bg-violet-400 rounded-full mr-2"></span>
+                Used: <span className="ml-1 text-violet-300 font-medium">{excuse.usedCount} times</span>
+              </div>
+            </div>
 
-          <div className="flex justify-end space-x-3">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-4 py-2 border border-gray-700 rounded-md hover:bg-gray-800 text-gray-300"
-              disabled={isLoading}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="px-4 py-2 dark-violet-button rounded-md disabled:opacity-50"
-            >
-              {isLoading ? "Saving..." : "Save Changes"}
-            </button>
-          </div>
-        </form>
+            {error && (
+              <div className="mb-5 p-3 rounded-md bg-red-900/20 border border-red-900/30 text-red-400 text-sm">
+                {error}
+              </div>
+            )}
+
+            <div className="flex justify-end space-x-3">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-2 border border-gray-700/50 rounded-md hover:bg-gray-800/50 text-gray-300 transition-colors"
+                disabled={isLoading}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="px-4 py-2 dark-violet-button rounded-md disabled:opacity-50"
+              >
+                {isLoading ? (
+                  <span className="flex items-center">
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Saving...
+                  </span>
+                ) : (
+                  "Save Changes"
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

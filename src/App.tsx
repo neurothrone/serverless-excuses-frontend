@@ -60,47 +60,64 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen py-8 dark">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <header className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-violet-300">Serverless Excuses</h1>
+    <div className="dark">
+      <div className="container mx-auto px-4 max-w-6xl py-8">
+        <header className="mb-12 text-center">
+          <h1 className="text-4xl font-bold gradient-text mb-2">Serverless Excuses</h1>
+          <p className="text-dark-text-secondary">Your go-to excuse generator for any situation</p>
         </header>
 
-        <div className="grid grid-cols-1 gap-8">
-          {/* Create Form */}
-          <section>
-            <ExcuseForm
-              onExcuseCreated={handleExcuseCreated}
-            />
-          </section>
-
-          {/* Finder Section */}
-          <section>
-            <ExcuseFinder
-              onExcuseFound={handleExcuseFound}
-            />
-          </section>
-
-          {/* Found Excuse */}
-          {foundExcuse && (
-            <section>
-              <ExcuseDetail
-                excuse={foundExcuse}
-                title={`Found Excuse`}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column - Create and Find */}
+          <div className="lg:col-span-1 space-y-8">
+            {/* Create Form */}
+            <section className="fade-in" style={{ animationDelay: '0.1s' }}>
+              <ExcuseForm
+                onExcuseCreated={handleExcuseCreated}
               />
             </section>
-          )}
 
-          {/* Excuses List */}
-          <section>
-            <ExcuseList
-              excuses={excuses}
-              isLoading={isLoading}
-              error={error}
-              onRefresh={fetchExcuses}
-              onEdit={handleEditExcuse}
-            />
-          </section>
+            {/* Finder Section */}
+            <section className="fade-in" style={{ animationDelay: '0.2s' }}>
+              <ExcuseFinder
+                onExcuseFound={handleExcuseFound}
+              />
+            </section>
+
+            {/* Found Excuse - Mobile Only */}
+            {foundExcuse && (
+              <section className="lg:hidden fade-in" style={{ animationDelay: '0.3s' }}>
+                <ExcuseDetail
+                  excuse={foundExcuse}
+                  title={`Found Excuse`}
+                />
+              </section>
+            )}
+          </div>
+
+          {/* Right Column - Results and List */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Found Excuse - Desktop Only */}
+            {foundExcuse && (
+              <section className="hidden lg:block fade-in" style={{ animationDelay: '0.3s' }}>
+                <ExcuseDetail
+                  excuse={foundExcuse}
+                  title={`Found Excuse`}
+                />
+              </section>
+            )}
+
+            {/* Excuses List */}
+            <section className="fade-in" style={{ animationDelay: '0.4s' }}>
+              <ExcuseList
+                excuses={excuses}
+                isLoading={isLoading}
+                error={error}
+                onRefresh={fetchExcuses}
+                onEdit={handleEditExcuse}
+              />
+            </section>
+          </div>
         </div>
 
         {/* Editor Modal */}
