@@ -23,6 +23,11 @@ async function fetchWithErrorHandling<T>(
       return { error: errorText || `Error: ${response.status}` };
     }
 
+    if (response.status === 204) {
+      return { data: undefined as T };
+    }
+
+
     const data = await response.json();
     return { data };
   } catch (error) {
