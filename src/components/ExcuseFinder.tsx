@@ -1,5 +1,6 @@
 import { type FormEvent, useState } from "react";
 import { api } from "../utils/api";
+import { UUID_V4_LENGTH, UUID_V4_REGEX } from "../constants/limits";
 import type Excuse from "../types/excuse.ts";
 import LoadingButton from "./LoadingButton";
 
@@ -18,6 +19,12 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
 
     if (!id.trim()) {
       setError("Please enter an ID");
+      return;
+    }
+
+    // Validate UUID v4 format
+    if (!UUID_V4_REGEX.test(id)) {
+      setError("Invalid UUID format. Please enter a valid UUID v4.");
       return;
     }
 
@@ -72,18 +79,27 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
             <h3 className="text-lg font-medium mb-3 text-violet-300">Get by ID</h3>
             <form onSubmit={handleGetById}>
               <div className="mb-3">
-                <label htmlFor="excuse-id" className="block text-sm font-medium mb-2 text-gray-300">
-                  Excuse ID
-                </label>
+                <div className="flex justify-between mb-2">
+                  <label htmlFor="excuse-id" className="block text-sm font-medium text-gray-300">
+                    Excuse ID
+                  </label>
+                  <span className={`text-xs ${id.length > 0 && !UUID_V4_REGEX.test(id) ? 'text-amber-400' : 'text-gray-400'}`}>
+                    {id.length}/{UUID_V4_LENGTH}
+                  </span>
+                </div>
                 <input
                   id="excuse-id"
                   type="text"
                   value={id}
                   onChange={(e) => setId(e.target.value)}
-                  className="w-full dark-input mb-2"
-                  placeholder="Enter ID..."
+                  className={`w-full dark-input mb-1 ${id.length > 0 && !UUID_V4_REGEX.test(id) ? 'border-amber-500/50' : ''}`}
+                  placeholder="xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx"
                   disabled={isLoadingById}
+                  maxLength={UUID_V4_LENGTH}
                 />
+                <p className="text-xs text-gray-500 mt-1">
+                  Format: xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx (UUID v4)
+                </p>
               </div>
               <div className="flex justify-end">
                 <LoadingButton
