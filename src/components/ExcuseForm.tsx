@@ -55,7 +55,7 @@ export default function ExcuseForm({ onExcuseCreated }: ExcuseFormProps) {
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="w-full dark-input"
+              className="w-full dark-input mb-1"
               placeholder="Enter your excuse..."
               disabled={isLoading}
               autoFocus

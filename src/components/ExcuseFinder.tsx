@@ -68,7 +68,7 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
       <div className="dark-card-body">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Get by ID */}
-          <div className="bg-gray-800/30 p-4 rounded-lg border border-gray-700/50">
+          <div className="bg-gray-800/30 p-5 rounded-lg border border-gray-700/50">
             <h3 className="text-lg font-medium mb-3 text-violet-300">Get by ID</h3>
             <form onSubmit={handleGetById}>
               <div className="mb-3">
@@ -80,12 +80,12 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
                   type="text"
                   value={id}
                   onChange={(e) => setId(e.target.value)}
-                  className="w-full dark-input"
+                  className="w-full dark-input mb-2"
                   placeholder="Enter ID..."
                   disabled={isLoadingById}
                 />
               </div>
-              <div className="flex justify-end mb-1 mr-1">
+              <div className="flex justify-end">
                 <LoadingButton
                   type="submit"
                   isLoading={isLoadingById}
@@ -98,13 +98,13 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
           </div>
 
           {/* Get Random */}
-          <div className="bg-gray-800/30 p-4 rounded-lg border border-gray-700/50">
+          <div className="bg-gray-800/30 p-5 rounded-lg border border-gray-700/50">
             <h3 className="text-lg font-medium mb-3 text-violet-300">Get Random</h3>
             <div className="flex flex-col h-[calc(100%-2rem)]">
               <p className="text-sm text-gray-400 mb-3">
                 Get a random excuse from the database.
               </p>
-              <div className="flex-grow flex items-end justify-end mb-3 mr-2">
+              <div className="flex-grow flex items-end justify-end mb-2">
                 <LoadingButton
                   onClick={handleGetRandom}
                   isLoading={isLoadingRandom}
