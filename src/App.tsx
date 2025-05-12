@@ -64,7 +64,6 @@ function App() {
       <div className="container mx-auto px-4 max-w-6xl">
         <header className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-violet-300">Serverless Excuses</h1>
-          <p className="mt-2 text-gray-300">Test your Azure Functions backend</p>
         </header>
 
         <div className="grid grid-cols-1 gap-8">
