@@ -60,22 +60,26 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen py-8 dark">
       <div className="container mx-auto px-4 max-w-6xl">
         <header className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-gray-800">Serverless Excuses</h1>
-          <p className="text-gray-600 mt-2">Test your Azure Functions backend</p>
+          <h1 className="text-3xl font-bold text-violet-300">Serverless Excuses</h1>
+          <p className="mt-2 text-gray-300">Test your Azure Functions backend</p>
         </header>
 
         <div className="grid grid-cols-1 gap-8">
           {/* Create Form */}
           <section>
-            <ExcuseForm onExcuseCreated={handleExcuseCreated}/>
+            <ExcuseForm
+              onExcuseCreated={handleExcuseCreated}
+            />
           </section>
 
           {/* Finder Section */}
           <section>
-            <ExcuseFinder onExcuseFound={handleExcuseFound}/>
+            <ExcuseFinder
+              onExcuseFound={handleExcuseFound}
+            />
           </section>
 
           {/* Found Excuse */}

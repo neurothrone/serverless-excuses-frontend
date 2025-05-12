@@ -59,14 +59,14 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
   };
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow">
+    <div className="p-4 rounded-lg shadow dark-card">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Get by ID */}
         <div>
-          <h2 className="text-xl font-semibold mb-4">Get Excuse by ID</h2>
+          <h2 className="text-xl font-semibold mb-4 text-violet-300">Get Excuse by ID</h2>
           <form onSubmit={handleGetById} className="flex items-end gap-2">
             <div className="flex-1">
-              <label htmlFor="excuse-id" className="block text-sm font-medium mb-1">
+              <label htmlFor="excuse-id" className="block text-sm font-medium mb-1 text-gray-300">
                 Excuse ID
               </label>
               <input
@@ -74,7 +74,7 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
                 type="text"
                 value={id}
                 onChange={(e) => setId(e.target.value)}
-                className="w-full px-3 py-2 border rounded-md"
+                className="w-full px-3 py-2 border rounded-md bg-gray-800 border-gray-700 text-white placeholder-gray-500"
                 placeholder="Enter ID..."
                 disabled={isLoadingById}
               />
@@ -82,7 +82,7 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
             <button
               type="submit"
               disabled={isLoadingById}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
+              className="px-4 py-2 rounded-md disabled:opacity-50 dark-violet-button"
             >
               {isLoadingById ? "Loading..." : "Get"}
             </button>
@@ -91,19 +91,21 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
 
         {/* Get Random */}
         <div>
-          <h2 className="text-xl font-semibold mb-4">Get Random Excuse</h2>
-          <button
-            onClick={handleGetRandom}
-            disabled={isLoadingRandom}
-            className="w-full px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 disabled:opacity-50"
-          >
-            {isLoadingRandom ? "Loading..." : "Get Random Excuse"}
-          </button>
+          <h2 className="text-xl font-semibold mb-4 text-violet-300">Get Random Excuse</h2>
+          <div className="flex items-end">
+            <button
+              onClick={handleGetRandom}
+              disabled={isLoadingRandom}
+              className="px-4 py-2 rounded-md disabled:opacity-50 dark-violet-button"
+            >
+              {isLoadingRandom ? "Loading..." : "Get Random Excuse"}
+            </button>
+          </div>
         </div>
       </div>
 
       {error && (
-        <div className="mt-4 p-3 bg-red-50 text-red-500 text-sm rounded-md">
+        <div className="mt-4 p-3 text-sm rounded-md bg-red-900/20 text-red-400">
           {error}
         </div>
       )}

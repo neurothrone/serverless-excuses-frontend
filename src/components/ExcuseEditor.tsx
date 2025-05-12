@@ -53,13 +53,13 @@ export default function ExcuseEditor({ excuse, onClose, onSaved }: ExcuseEditorP
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+    <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
+      <div className="dark-card rounded-lg shadow-lg max-w-md w-full p-6">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">Edit Excuse</h2>
+          <h2 className="text-xl font-semibold text-violet-300">Edit Excuse</h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700"
+            className="text-gray-400 hover:text-gray-200"
           >
             ✕
           </button>
@@ -67,7 +67,7 @@ export default function ExcuseEditor({ excuse, onClose, onSaved }: ExcuseEditorP
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="edit-excuse-text" className="block text-sm font-medium mb-1">
+            <label htmlFor="edit-excuse-text" className="block text-sm font-medium mb-1 text-gray-300">
               Excuse Text
             </label>
             <input
@@ -75,25 +75,25 @@ export default function ExcuseEditor({ excuse, onClose, onSaved }: ExcuseEditorP
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="w-full px-3 py-2 border rounded-md"
+              className="w-full px-3 py-2 border rounded-md bg-gray-800 border-gray-700 text-white placeholder-gray-500"
               disabled={isLoading}
             />
           </div>
 
-          <div className="text-sm text-gray-500 mb-4">
+          <div className="text-sm text-gray-400 mb-4">
             <p>ID: {excuse.id}</p>
             <p>Used Count: {excuse.usedCount}</p>
           </div>
 
           {error && (
-            <div className="mb-4 text-red-500 text-sm">{error}</div>
+            <div className="mb-4 text-red-400 text-sm">{error}</div>
           )}
 
           <div className="flex justify-end space-x-3">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 border rounded-md hover:bg-gray-50"
+              className="px-4 py-2 border border-gray-700 rounded-md hover:bg-gray-800 text-gray-300"
               disabled={isLoading}
             >
               Cancel
@@ -101,7 +101,7 @@ export default function ExcuseEditor({ excuse, onClose, onSaved }: ExcuseEditorP
             <button
               type="submit"
               disabled={isLoading}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
+              className="px-4 py-2 dark-violet-button rounded-md disabled:opacity-50"
             >
               {isLoading ? "Saving..." : "Save Changes"}
             </button>

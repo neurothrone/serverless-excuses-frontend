@@ -42,16 +42,16 @@ export default function ExcuseList({
   };
 
   if (isLoading) {
-    return <div className="p-4 text-center">Loading excuses...</div>;
+    return <div className="p-4 text-center text-gray-300">Loading excuses...</div>;
   }
 
   if (error) {
     return (
-      <div className="p-4 bg-red-50 text-red-500 rounded-lg">
+      <div className="p-4 bg-red-900/20 text-red-400 rounded-lg">
         <p>Error loading excuses: {error}</p>
         <button
           onClick={onRefresh}
-          className="mt-2 px-3 py-1 bg-red-100 text-red-700 rounded-md hover:bg-red-200"
+          className="mt-2 px-3 py-1 bg-red-900/30 text-red-300 rounded-md hover:bg-red-900/40"
         >
           Try Again
         </button>
@@ -61,29 +61,29 @@ export default function ExcuseList({
 
   if (excuses.length === 0) {
     return (
-      <div className="p-4 text-center text-gray-500">
+      <div className="p-4 text-center text-gray-400">
         No excuses found. Create one to get started!
       </div>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow overflow-hidden">
-      <h2 className="text-xl font-semibold p-4 border-b">All Excuses</h2>
+    <div className="dark-card rounded-lg shadow overflow-hidden">
+      <h2 className="text-xl font-semibold p-4 border-b border-gray-700 text-violet-300">All Excuses</h2>
 
       {deleteError && (
-        <div className="p-3 bg-red-50 text-red-500 text-sm border-b">
+        <div className="p-3 bg-red-900/20 text-red-400 text-sm border-b border-gray-700">
           {deleteError}
         </div>
       )}
 
-      <ul className="divide-y">
+      <ul className="divide-y divide-gray-700">
         {excuses.map((excuse) => (
-          <li key={excuse.id} className="p-4 hover:bg-gray-50">
+          <li key={excuse.id} className="p-4 hover:bg-gray-800">
             <div className="flex justify-between items-start">
               <div>
-                <p className="font-medium">{excuse.text}</p>
-                <div className="mt-1 text-sm text-gray-500">
+                <p className="font-medium text-white">{excuse.text}</p>
+                <div className="mt-1 text-sm text-gray-400">
                   <span className="mr-3">ID: {excuse.id}</span>
                   <span>Used: {excuse.usedCount} times</span>
                 </div>
@@ -92,7 +92,7 @@ export default function ExcuseList({
               <div className="flex space-x-2">
                 <button
                   onClick={() => onEdit(excuse)}
-                  className="px-3 py-1 bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200"
+                  className="px-3 py-1 bg-violet-900/50 text-violet-300 rounded-md hover:bg-violet-900/70"
                 >
                   Edit
                 </button>
@@ -100,7 +100,7 @@ export default function ExcuseList({
                 <button
                   onClick={() => handleDelete(excuse.id)}
                   disabled={deleteInProgress === excuse.id}
-                  className="px-3 py-1 bg-red-100 text-red-700 rounded-md hover:bg-red-200 disabled:opacity-50"
+                  className="px-3 py-1 bg-red-900/30 text-red-300 rounded-md hover:bg-red-900/50 disabled:opacity-50"
                 >
                   {deleteInProgress === excuse.id ? "Deleting..." : "Delete"}
                 </button>

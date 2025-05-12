@@ -38,12 +38,12 @@ export default function ExcuseForm({ onExcuseCreated }: ExcuseFormProps) {
   };
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow">
-      <h2 className="text-xl font-semibold mb-4">Create New Excuse</h2>
+    <div className="p-4 rounded-lg shadow dark-card">
+      <h2 className="text-xl font-semibold mb-4 text-violet-300">Create New Excuse</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="excuse-text" className="block text-sm font-medium mb-1">
+          <label htmlFor="excuse-text" className="block text-sm font-medium mb-1 text-gray-300">
             Excuse Text
           </label>
           <input
@@ -51,7 +51,7 @@ export default function ExcuseForm({ onExcuseCreated }: ExcuseFormProps) {
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md"
+            className="w-full px-3 py-2 border rounded-md bg-gray-800 border-gray-700 text-white placeholder-gray-500"
             placeholder="Enter your excuse..."
             disabled={isLoading}
           />
@@ -64,7 +64,7 @@ export default function ExcuseForm({ onExcuseCreated }: ExcuseFormProps) {
         <button
           type="submit"
           disabled={isLoading}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:opacity-50"
+          className="px-4 py-2 rounded-md disabled:opacity-50 dark-violet-button"
         >
           {isLoading ? "Creating..." : "Create Excuse"}
         </button>

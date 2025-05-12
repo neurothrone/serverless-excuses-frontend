@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+:root {
+  --violet-dark: #4c1d95;
+  --violet-medium: #7c3aed;
+  --violet-light: #a78bfa;
+  --dark-bg: #121212;
+  --dark-card: #1e1e1e;
+  --dark-border: #333333;
+  --dark-text: #e5e5e5;
+  --dark-text-secondary: #a1a1aa;
+}
+
+/* Dark mode styles */
+.dark {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.dark-card {
+  background-color: var(--dark-card);
+  border-color: var(--dark-border);
+}
+
+.dark-text {
+  color: var(--dark-text);
+}
+
+.dark-text-secondary {
+  color: var(--dark-text-secondary);
+}
+
+.dark-violet-button {
+  background-color: var(--violet-medium);
+  color: white;
+}
+
+.dark-violet-button:hover {
+  background-color: var(--violet-dark);
+}
+
+.dark-violet-light-button {
+  background-color: var(--violet-light);
+  color: var(--dark-bg);
+}
+
+.dark-violet-light-button:hover {
+  opacity: 0.9;
+}
