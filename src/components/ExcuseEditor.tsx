@@ -1,5 +1,6 @@
 import { useState, useEffect, type FormEvent } from "react";
 import { api } from "../utils/api";
+import { MAX_EXCUSE_LENGTH } from "../constants/limits";
 import type Excuse from "../types/excuse.ts";
 import LoadingButton from "./LoadingButton";
 
@@ -74,9 +75,14 @@ export default function ExcuseEditor({ excuse, onClose, onSaved }: ExcuseEditorP
         <div className="p-6">
           <form onSubmit={handleSubmit}>
             <div className="mb-5">
-              <label htmlFor="edit-excuse-text" className="block text-sm font-medium mb-2 text-gray-300">
-                Excuse Text
-              </label>
+              <div className="flex justify-between mb-2">
+                <label htmlFor="edit-excuse-text" className="block text-sm font-medium text-gray-300">
+                  Excuse Text
+                </label>
+                <span className={`text-xs ${text.length > MAX_EXCUSE_LENGTH * 0.9 ? 'text-amber-400' : 'text-gray-400'}`}>
+                  {text.length}/{MAX_EXCUSE_LENGTH}
+                </span>
+              </div>
               <input
                 id="edit-excuse-text"
                 type="text"
@@ -84,6 +90,7 @@ export default function ExcuseEditor({ excuse, onClose, onSaved }: ExcuseEditorP
                 onChange={(e) => setText(e.target.value)}
                 className="w-full dark-input"
                 disabled={isLoading}
+                maxLength={MAX_EXCUSE_LENGTH}
                 autoFocus
               />
             </div>

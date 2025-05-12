@@ -130,9 +130,9 @@ export default function ExcuseList({
           {excuses.map((excuse) => (
             <li key={excuse.id} className="transition-colors hover:bg-gray-800/50">
               <div className="p-4">
-                <div className="flex justify-between items-start gap-4">
-                  <div className="flex-grow">
-                    <p className="font-medium text-white text-lg mb-2">{excuse.text}</p>
+                <div className="flex flex-col gap-4">
+                  <div className="w-full">
+                    <p className="font-medium text-white text-lg mb-2 break-words">{excuse.text}</p>
                     <div className="flex flex-wrap gap-2 text-sm">
                       <button
                         onClick={() => handleCopyId(excuse.id)}
@@ -164,7 +164,7 @@ export default function ExcuseList({
                     </div>
                   </div>
 
-                  <div className="flex space-x-2 shrink-0">
+                  <div className="flex space-x-2">
                     <LoadingButton
                       onClick={() => onEdit(excuse)}
                       className="bg-violet-900/50 text-violet-300 rounded-md hover:bg-violet-900/70 transition-colors flex items-center dark-violet-button-sm"

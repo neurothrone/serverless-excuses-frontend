@@ -1,5 +1,6 @@
 import { type FormEvent, useState } from "react";
 import { api } from "../utils/api";
+import { MAX_EXCUSE_LENGTH } from "../constants/limits";
 import LoadingButton from "./LoadingButton";
 
 interface ExcuseFormProps {
@@ -47,9 +48,14 @@ export default function ExcuseForm({ onExcuseCreated }: ExcuseFormProps) {
       <div className="dark-card-body">
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="excuse-text" className="block text-sm font-medium mb-2 text-gray-300">
-              Excuse Text
-            </label>
+            <div className="flex justify-between mb-2">
+              <label htmlFor="excuse-text" className="block text-sm font-medium text-gray-300">
+                Excuse Text
+              </label>
+              <span className={`text-xs ${text.length > MAX_EXCUSE_LENGTH * 0.9 ? 'text-amber-400' : 'text-gray-400'}`}>
+                {text.length}/{MAX_EXCUSE_LENGTH}
+              </span>
+            </div>
             <input
               id="excuse-text"
               type="text"
@@ -58,6 +64,7 @@ export default function ExcuseForm({ onExcuseCreated }: ExcuseFormProps) {
               className="w-full dark-input mb-1"
               placeholder="Enter your excuse..."
               disabled={isLoading}
+              maxLength={MAX_EXCUSE_LENGTH}
               autoFocus
             />
           </div>
