@@ -67,9 +67,9 @@ function App() {
           <p className="text-dark-text-secondary">Your go-to excuse generator for any situation</p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Left Column - Create and Find */}
-          <div className="lg:col-span-1 space-y-8">
+          <div className="lg:col-span-2 space-y-8">
             {/* Create Form */}
             <section className="fade-in" style={{ animationDelay: '0.1s' }}>
               <ExcuseForm
@@ -96,7 +96,7 @@ function App() {
           </div>
 
           {/* Right Column - Results and List */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-3 space-y-8">
             {/* Found Excuse - Desktop Only */}
             {foundExcuse && (
               <section className="hidden lg:block fade-in" style={{ animationDelay: '0.3s' }}>

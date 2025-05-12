@@ -66,7 +66,8 @@ export default function ExcuseList({
           <div className="flex justify-end">
             <button
               onClick={onRefresh}
-              className="px-4 py-2 bg-red-900/30 text-red-300 rounded-md hover:bg-red-900/40 transition-colors"
+              className="bg-red-900/30 text-red-300 rounded-md hover:bg-red-900/40 transition-colors dark-violet-button"
+              style={{ backgroundColor: "rgba(127, 29, 29, 0.3)" }}
             >
               Try Again
             </button>
@@ -131,7 +132,8 @@ export default function ExcuseList({
                   <div className="flex space-x-2 shrink-0">
                     <button
                       onClick={() => onEdit(excuse)}
-                      className="px-3 py-1.5 bg-violet-900/50 text-violet-300 rounded-md hover:bg-violet-900/70 transition-colors flex items-center"
+                      className="bg-violet-900/50 text-violet-300 rounded-md hover:bg-violet-900/70 transition-colors flex items-center dark-violet-button-sm"
+                      style={{ backgroundColor: "rgba(76, 29, 149, 0.5)" }}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -142,7 +144,8 @@ export default function ExcuseList({
                     <button
                       onClick={() => handleDelete(excuse.id)}
                       disabled={deleteInProgress === excuse.id}
-                      className="px-3 py-1.5 bg-red-900/30 text-red-300 rounded-md hover:bg-red-900/50 disabled:opacity-50 transition-colors flex items-center"
+                      className="bg-red-900/30 text-red-300 rounded-md hover:bg-red-900/50 disabled:opacity-50 transition-colors flex items-center dark-violet-button-sm"
+                      style={{ backgroundColor: "rgba(127, 29, 29, 0.3)" }}
                     >
                       {deleteInProgress === excuse.id ? (
                         <span className="flex items-center">

@@ -88,7 +88,7 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
                 <button
                   type="submit"
                   disabled={isLoadingById}
-                  className="px-4 py-2 rounded-md disabled:opacity-50 dark-violet-button"
+                  className="rounded-md disabled:opacity-50 dark-violet-button"
                 >
                   {isLoadingById ? (
                     <span className="flex items-center">
@@ -117,7 +117,7 @@ export default function ExcuseFinder({ onExcuseFound }: ExcuseFinderProps) {
                 <button
                   onClick={handleGetRandom}
                   disabled={isLoadingRandom}
-                  className="px-4 py-2 rounded-md disabled:opacity-50 dark-violet-button"
+                  className="rounded-md disabled:opacity-50 dark-violet-button"
                 >
                   {isLoadingRandom ? (
                     <span className="flex items-center">

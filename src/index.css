@@ -87,6 +87,8 @@
   transition: all var(--transition-fast);
   position: relative;
   overflow: hidden;
+  padding: 0.5rem 1rem; /* Consistent padding for all buttons */
+  border-radius: 0.375rem;
 }
 
 .dark-violet-button:hover {
@@ -96,6 +98,27 @@
 }
 
 .dark-violet-button:active {
+  transform: translateY(0);
+}
+
+/* Secondary button style for smaller action buttons */
+.dark-violet-button-sm {
+  background-color: var(--violet-medium);
+  color: white;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  padding: 0.375rem 0.75rem; /* Smaller padding for secondary buttons */
+  border-radius: 0.375rem;
+}
+
+.dark-violet-button-sm:hover {
+  background-color: var(--violet-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.dark-violet-button-sm:active {
   transform: translateY(0);
 }
 

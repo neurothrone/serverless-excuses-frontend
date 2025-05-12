@@ -71,7 +71,7 @@ export default function ExcuseForm({ onExcuseCreated }: ExcuseFormProps) {
             <button
               type="submit"
               disabled={isLoading}
-              className="px-4 py-2 rounded-md disabled:opacity-50 dark-violet-button"
+              className="rounded-md disabled:opacity-50 dark-violet-button"
             >
               {isLoading ? (
                 <span className="flex items-center">

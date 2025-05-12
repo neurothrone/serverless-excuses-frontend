@@ -109,7 +109,8 @@ export default function ExcuseEditor({ excuse, onClose, onSaved }: ExcuseEditorP
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 border border-gray-700/50 rounded-md hover:bg-gray-800/50 text-gray-300 transition-colors"
+                className="border border-gray-700/50 rounded-md hover:bg-gray-800/50 text-gray-300 transition-colors dark-violet-button"
+                style={{ backgroundColor: "transparent" }}
                 disabled={isLoading}
               >
                 Cancel
@@ -117,7 +118,7 @@ export default function ExcuseEditor({ excuse, onClose, onSaved }: ExcuseEditorP
               <button
                 type="submit"
                 disabled={isLoading}
-                className="px-4 py-2 dark-violet-button rounded-md disabled:opacity-50"
+                className="dark-violet-button rounded-md disabled:opacity-50"
               >
                 {isLoading ? (
                   <span className="flex items-center">
