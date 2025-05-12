@@ -20,6 +20,19 @@ export default function ExcuseList({
 }: ExcuseListProps) {
   const [deleteInProgress, setDeleteInProgress] = useState<string | null>(null);
   const [deleteError, setDeleteError] = useState<string | null>(null);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const handleCopyId = (id: string) => {
+    navigator.clipboard.writeText(id)
+      .then(() => {
+        setCopiedId(id);
+        // Reset the copied state after 2 seconds
+        setTimeout(() => setCopiedId(null), 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy ID: ', err);
+      });
+  };
 
   const handleDelete = async (id: string) => {
     if (window.confirm("Are you sure you want to delete this excuse?")) {
@@ -121,9 +134,30 @@ export default function ExcuseList({
                   <div className="flex-grow">
                     <p className="font-medium text-white text-lg mb-2">{excuse.text}</p>
                     <div className="flex flex-wrap gap-2 text-sm">
-                      <span className="bg-gray-800/70 px-2 py-1 rounded-md text-gray-400">
-                        ID: <span className="text-violet-300">{excuse.id}</span>
-                      </span>
+                      <button
+                        onClick={() => handleCopyId(excuse.id)}
+                        className={`flex items-center px-2 py-1 rounded-md transition-colors ${
+                          copiedId === excuse.id 
+                            ? 'bg-green-900/50 text-green-300' 
+                            : 'bg-gray-800/70 text-gray-400 hover:bg-violet-900/30 hover:text-violet-300'
+                        }`}
+                      >
+                        {copiedId === excuse.id ? (
+                          <>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            Copied!
+                          </>
+                        ) : (
+                          <>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                            </svg>
+                            Copy ID
+                          </>
+                        )}
+                      </button>
                       <span className="bg-gray-800/70 px-2 py-1 rounded-md text-gray-400">
                         Used: <span className="text-violet-300">{excuse.usedCount} times</span>
                       </span>
