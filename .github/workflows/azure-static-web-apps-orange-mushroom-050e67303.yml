@@ -28,6 +28,8 @@ jobs:
           node-version: '20'
       - name: Build app with Vite
         run: |
+          echo "VITE_BASE_API_URL=${VITE_BASE_API_URL}" >> .env
+          echo "VITE_FUNCTION_KEY=${VITE_FUNCTION_KEY}" >> .env
           npm ci
           npm run build
 
