@@ -134,30 +134,6 @@ export default function ExcuseList({
                   <div className="w-full">
                     <p className="font-medium text-white text-lg mb-2 break-words">{excuse.text}</p>
                     <div className="flex flex-wrap gap-2 text-sm">
-                      <button
-                        onClick={() => handleCopyId(excuse.id)}
-                        className={`flex items-center px-2 py-1 rounded-md transition-colors ${
-                          copiedId === excuse.id 
-                            ? 'bg-green-900/50 text-green-300' 
-                            : 'bg-gray-800/70 text-gray-400 hover:bg-violet-900/30 hover:text-violet-300'
-                        }`}
-                      >
-                        {copiedId === excuse.id ? (
-                          <>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                            Copied!
-                          </>
-                        ) : (
-                          <>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                            </svg>
-                            Copy ID
-                          </>
-                        )}
-                      </button>
                       <span className="bg-gray-800/70 px-2 py-1 rounded-md text-gray-400">
                         Used: <span className="text-violet-300">{excuse.usedCount} times</span>
                       </span>
@@ -165,6 +141,31 @@ export default function ExcuseList({
                   </div>
 
                   <div className="flex space-x-2">
+                    <button
+                      onClick={() => handleCopyId(excuse.id)}
+                      className={`flex items-center rounded-md transition-colors ${
+                        copiedId === excuse.id 
+                          ? 'bg-green-900/50 text-green-300' 
+                          : 'bg-violet-900/50 text-violet-300 hover:bg-violet-900/70 dark-violet-button-sm'
+                      }`}
+                      style={{ backgroundColor: copiedId === excuse.id ? "rgba(22, 101, 52, 0.5)" : "rgba(76, 29, 149, 0.5)" }}
+                    >
+                      {copiedId === excuse.id ? (
+                        <>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          Copied!
+                        </>
+                      ) : (
+                        <>
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                          </svg>
+                          Copy ID
+                        </>
+                      )}
+                    </button>
                     <LoadingButton
                       onClick={() => onEdit(excuse)}
                       className="bg-violet-900/50 text-violet-300 rounded-md hover:bg-violet-900/70 transition-colors flex items-center dark-violet-button-sm"
