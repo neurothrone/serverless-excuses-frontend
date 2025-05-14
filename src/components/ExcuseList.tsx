@@ -145,7 +145,7 @@ export default function ExcuseList({
                       onClick={() => handleCopyId(excuse.id)}
                       className={`flex items-center rounded-md transition-colors ${
                         copiedId === excuse.id 
-                          ? 'bg-green-900/50 text-green-300' 
+                          ? 'bg-green-900/50 text-green-300 px-3 py-1.5' 
                           : 'bg-violet-900/50 text-violet-300 hover:bg-violet-900/70 dark-violet-button-sm'
                       }`}
                       style={{ backgroundColor: copiedId === excuse.id ? "rgba(22, 101, 52, 0.5)" : "rgba(76, 29, 149, 0.5)" }}
